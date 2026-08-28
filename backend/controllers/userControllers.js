@@ -58,7 +58,7 @@ const getUserProfile = async (req, res) => {
 
         const token = authHeader.split(" ")[1];
 
-        const decoded = jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         const user = await userModel.getUsers(decoded.email);
         if(!user){

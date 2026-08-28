@@ -58,12 +58,12 @@ userSchema.statics.register = async function (name, email, password) {
             );
         }
 
-        // Check if user already exists
-        const existingUser = await this.findOne({ email });
+      //Check if user already exists
+      //  const existingUser = await this.findOne({ email });
 
-        if (existingUser) {
-            throw new Error("User already exists");
-        }
+      //  if (existingUser) {
+       //     throw new Error("User already exists");
+      //  }
 
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -92,10 +92,9 @@ userSchema.statics.getUsers=async function(email){
         return user;
 
     }
-    catch{
-
-
-    }
+    catch(error){
+        throw new Error("Error fetching user:error.message")
+    };
 }
 
 // LOGIN

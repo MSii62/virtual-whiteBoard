@@ -1,5 +1,18 @@
 const Canvas= require('../Models/canvasModel')
 
+const createCanvas=async (req,res)=>{
+    const email=req.email;
+    const {name}=req.name;
+
+    try {
+        const newCanvas=await Canvas.createCanvasForUser(email,name);
+        res.status(201).json(newCanvas);
+    }
+    catch(error){
+        res.status(400).json({message:error.message});
+    }
+}
+
 const getAllCanvases= async(req,res)=>{
     const email=req.email;
 
@@ -12,4 +25,4 @@ const getAllCanvases= async(req,res)=>{
     }
     
 }
-module.exports={getAllCanvases};
+module.exports={getAllCanvases,createCanvas};

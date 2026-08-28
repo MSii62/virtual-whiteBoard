@@ -24,8 +24,9 @@ const  CanvasSchema = new mongoose.Schema(
 
 //create a canvas for a user with given email
 CanvasSchema.statics.createCanvasForUser = async function (email,name) {
-    const user = await mongoose.model('User').findOne({email});
+   
     try{
+         const user = await mongoose.model('User').findOne({email}); 
         if(!user){
             return Error('User not found');
     }

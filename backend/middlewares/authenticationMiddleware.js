@@ -1,14 +1,15 @@
 const jwt =require('jsonwebtoken')
-const User = require('../models/userModel')
-const SECRET_KEY= process.env.SECRET_KEY;
+const User = require('../Models/userModel')
+const SECRET_KEY= process.env.JWT_SECRET;
 
 const authenticationMiddleware= async(req,res,next)=>{
+    try{
     const token=req.header('Authorization').replace('Bearer ','');
     if(!token){
         return res.status(401).json({message:'authentication failed'});   
     }
-    try{
-        const decoded=jwt.verify(token.replace("Bearer ",""),SECRET_KEY);
+   
+        const decoded=jwt.verify(token,SECRET_KEY);
         req.email=decoded.email;
         next();
     }
