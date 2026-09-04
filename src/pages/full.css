@@ -1,3 +1,7 @@
+/* =========================
+   GLOBAL
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -5,32 +9,46 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f5f7fb;
 }
+
+
+/* =========================
+   LOGIN PAGE
+========================= */
 
 .login-container {
   min-height: 100vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: #f5f7fb;
 }
 
 .login-card {
   width: 380px;
-  padding: 40px;
+  padding: 35px;
+
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
 .login-card h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
+  margin: 0;
+  text-align: center;
+
+  color: #1f2937;
+  font-size: 30px;
 }
 
-.login-card p {
-  margin: 0 0 30px;
-  color: #777;
+.login-card > p {
+  margin: 8px 0 30px;
+
+  text-align: center;
+  color: #6b7280;
 }
 
 .input-group {
@@ -39,7 +57,9 @@ body {
 
 .input-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
+
+  color: #374151;
   font-size: 14px;
   font-weight: 600;
 }
@@ -47,36 +67,268 @@ body {
 .input-group input {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #ddd;
+
+  border: 1px solid #d1d5db;
   border-radius: 8px;
+
   font-size: 15px;
   outline: none;
 }
 
 .input-group input:focus {
-  border-color: #555;
+  border-color: #4f46e5;
 }
 
 .login-card button {
   width: 100%;
-  padding: 13px;
+  padding: 12px;
+
   border: none;
   border-radius: 8px;
-  background: #111;
+
+  background: #4f46e5;
   color: white;
+
   font-size: 15px;
+  font-weight: 600;
+
   cursor: pointer;
 }
 
 .login-card button:hover {
-  background: #333;
+  background: #4338ca;
 }
 
 .error {
-  padding: 10px;
   margin-bottom: 20px;
-  background: #ffecec;
-  color: #d00;
-  border-radius: 6px;
+  padding: 10px;
+
+  border-radius: 7px;
+
+  background: #fee2e2;
+  color: #b91c1c;
+
   font-size: 14px;
+}
+
+
+/* =========================
+   PROFILE PAGE
+========================= */
+
+.profile-page {
+  min-height: 100vh;
+  padding: 40px 60px;
+
+  background: #f5f7fb;
+}
+
+
+/* Profile Header */
+
+.profile-header {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-header h1 {
+  margin: 0;
+
+  color: #1f2937;
+  font-size: 32px;
+}
+
+.profile-header p {
+  margin: 8px 0 0;
+
+  color: #6b7280;
+}
+
+
+/* Logout */
+
+.logout-button {
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #1f2937;
+  color: white;
+
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #111827;
+}
+
+
+/* Canvas Section */
+
+.canvas-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.canvas-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.canvas-section-header h2 {
+  margin: 0;
+
+  color: #1f2937;
+  font-size: 24px;
+}
+
+
+/* New Canvas */
+
+.new-canvas-button {
+  padding: 11px 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #4f46e5;
+  color: white;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.new-canvas-button:hover {
+  background: #4338ca;
+}
+
+
+/* Canvas Grid */
+
+.canvas-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(260px, 1fr)
+  );
+
+  gap: 24px;
+}
+
+
+/* Canvas Card */
+
+.canvas-card {
+  overflow: hidden;
+
+  background: white;
+
+  border-radius: 14px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  transition: 0.2s;
+}
+
+.canvas-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Canvas Preview */
+
+.canvas-preview {
+  height: 150px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #eef2ff;
+}
+
+.canvas-preview span {
+  font-size: 45px;
+  color: #4f46e5;
+}
+
+
+/* Canvas Info */
+
+.canvas-info {
+  padding: 18px 18px 8px;
+}
+
+.canvas-info h3 {
+  margin: 0;
+
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.canvas-info p {
+  margin: 7px 0 0;
+
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+
+/* Open Canvas */
+
+.open-canvas-button {
+  margin: 10px 18px 18px;
+
+  padding: 9px 15px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+
+  background: white;
+  color: #374151;
+
+  cursor: pointer;
+}
+
+.open-canvas-button:hover {
+  background: #f3f4f6;
+}
+
+
+/* Empty Canvas */
+
+.empty-state {
+  padding: 70px 20px;
+
+  text-align: center;
+
+  background: white;
+
+  border-radius: 14px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+
+  color: #1f2937;
+}
+
+.empty-state p {
+  margin: 0;
+
+  color: #6b7280;
 }

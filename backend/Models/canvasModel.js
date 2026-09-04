@@ -23,26 +23,25 @@ const  CanvasSchema = new mongoose.Schema(
 );
 
 //create a canvas for a user with given email
-CanvasSchema.statics.createCanvasForUser = async function (email,name) {
-   
-    try{
-         const user = await mongoose.model('User').findOne({email}); 
-        if(!user){
-            return Error('User not found');
+CanvasSchema.statics.createCanvasForUser = async function (email, name) {
+
+    const user = await mongoose.model('users').findOne({ email });
+
+    if (!user) {
+        throw new Error('User not found');
     }
-    const canvas = new this({owner: user._id, name,
+
+    const canvas = new this({
+        owner: user._id,
+        name: name,
         elements: [],
         sharedWith: [],
     });
 
     const newCanvas = await canvas.save();
-    return newCanvas;
-   
-}
-catch(error){
-    return  Error('error creating canvas');
-}}
 
+    return newCanvas;
+};
 CanvasSchema.statics.getAllCanvases=async function(email){
     const user= await mongoose.model('users').findOne({email});
     if(!user){
@@ -51,6 +50,21 @@ CanvasSchema.statics.getAllCanvases=async function(email){
     const canvases=await this.find({$or:[{owner: user._id},{sharedWith: user._id}]});
 
     return canvases;
+}
+CanvasSchema.statics.loadCanvas=async function(email,canvasId){
+    const user=await mongoose.model('users').findOne({email});
+    if(!user){
+        throw new Error('user not found'); 
+    }
+    try{
+        const canvas=await this.findOne({_id:canvasId, $or:[{owner:user._id},{sharedWith:user._id}]});
+        if(!canvas){
+            throw new Error('canvas not found');
+        }
+        return canvas;
+    } catch (error) {
+        throw Error('error getting canvas');
+    }
 }
 
 const Canvas = mongoose.model('Canvas', CanvasSchema);

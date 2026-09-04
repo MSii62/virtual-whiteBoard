@@ -102,7 +102,7 @@ userSchema.statics.login = async function (email, password) {
     try {
 
         // Find user using email only
-        const user = await this.findOne({ email });
+        const user = await this.findOne( {email} );
 
         if (!user) {
             throw new Error("Invalid login credentials");

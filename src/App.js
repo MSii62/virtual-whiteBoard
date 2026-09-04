@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import CanvasPage from "./pages/CanvasPage";
 import "./pages/full.css";
 
 function ProtectedRoute({ children }) {
@@ -27,6 +28,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+        path="/load/:id"
+         element={
+          <ProtectedRoute>
+          <CanvasPage />
+          </ProtectedRoute>
+  }
+/>
       </Routes>
     </BrowserRouter>
   );
